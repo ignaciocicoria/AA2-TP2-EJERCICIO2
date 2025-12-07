@@ -3,6 +3,7 @@ from ple import PLE
 import numpy as np
 import time
 from agentes.dq_agent import QAgent
+import matplotlib.pyplot as plt
 
 # --- Configuración del Entorno y Agente ---
 game = FlappyBird()
@@ -84,3 +85,22 @@ for episode in range(5):
         total_reward_episode += reward
         time.sleep(0.03)
     print(f"Recompensa episodio de prueba {episode+1}: {total_reward_episode}")
+
+# --- Graficar la evolución de recompensas ---
+window_size = 100  # Promedio móvil de los últimos 100 episodios
+avg_rewards = []
+
+for i in range(len(rewards_all_episodes)):
+    if i < window_size:
+        avg_rewards.append(np.mean(rewards_all_episodes[:i+1]))
+    else:
+        avg_rewards.append(np.mean(rewards_all_episodes[i-window_size+1:i+1]))
+
+plt.figure(figsize=(12,6))
+plt.plot(avg_rewards, label=f'Recompensa promedio ({window_size} episodios)')
+plt.xlabel('Episodio')
+plt.ylabel('Recompensa promedio')
+plt.title('Evolución de la recompensa en Q-Learning')
+plt.legend()
+plt.grid(True)
+plt.show()

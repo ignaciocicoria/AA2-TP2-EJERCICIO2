@@ -30,25 +30,53 @@ class QAgent(Agent):
             self.q_table = defaultdict(lambda: np.zeros(len(self.actions)))
         # TODO: Definir parámetros de discretización según el entorno
 
+    def discretize_velocity(self, vel):
+            """
+            Convierte la velocidad continua en 5 bins discretos.
+            """
+            if vel < -5:
+                return 0   # subiendo rápido
+            elif vel < -1:
+                return 1   # subiendo lento
+            elif vel <= 1:
+                return 2   # casi quieto
+            elif vel <= 5:
+                return 3   # bajando lento
+            else:
+                return 4   # bajando rápido
+
     def discretize_state(self, state):
         """
         Discretiza el estado continuo en un estado discreto (tupla).
-        COMPLETAR: Implementar la discretización adecuada para el entorno.
         """
-        # Ejemplo:
-        # return (player_y_bin, player_vel_bin, ...)
-        raise NotImplementedError("Completar la función de discretización de estado")
+        # Definir tamaños de bin
+        y_bin = state['player_y'] // 10         # cada 10 píxeles
+        vel_bin = self.discretize_velocity(state['player_vel'])
+        pipe_dist_bin = state['next_pipe_dist_to_player'] // 10
+        pipe_top_bin = state['next_pipe_top_y'] // 10
+        pipe_bottom_bin = state['next_pipe_bottom_y'] // 10
+
+        # Retornar estado discretizado como tupla
+        return (y_bin, vel_bin, pipe_dist_bin, pipe_top_bin, pipe_bottom_bin)
+
+
 
     def act(self, state):
         """
         Elige una acción usando epsilon-greedy sobre la Q-table.
-        COMPLETAR: Implementar la política epsilon-greedy.
         """
-        # Sugerencia:
-        # - Discretizar el estado
-        # - Con probabilidad epsilon elegir acción aleatoria
-        # - Si no, elegir acción con mayor Q-value
-        raise NotImplementedError("Completar la función de selección de acción (act)")
+        discrete_state = self.discretize_state(state)
+
+        # Exploración: con probabilidad epsilon, acción aleatoria
+        if np.random.rand() < self.epsilon:
+            return np.random.choice(self.actions)
+
+        # Explotación: elegir acción con mayor Q-value
+        q_values = self.q_table.get(discrete_state, np.zeros(len(self.actions)))
+        max_q_idx = np.argmax(q_values)
+        return self.actions[max_q_idx]
+
+
 
     def update(self, state, action, reward, next_state, done):
         """
