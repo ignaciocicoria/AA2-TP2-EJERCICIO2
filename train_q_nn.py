@@ -22,6 +22,8 @@ y = np.array(y)
 # --- Definir la red neuronal ---
 model = keras.Sequential([
     # COMPLETAR: Definir la arquitectura de la red neuronal
+    
+
 ])
 
 model.compile(optimizer='adam', loss='mse')

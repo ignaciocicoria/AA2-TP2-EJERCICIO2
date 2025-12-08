@@ -4,3 +4,4 @@ tfenv/
 *__pycache__*
 
 *.pkl
+.vscode/
