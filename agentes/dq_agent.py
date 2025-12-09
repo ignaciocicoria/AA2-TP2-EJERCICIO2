@@ -3,6 +3,7 @@ import numpy as np
 from collections import defaultdict
 import pickle
 
+
 class QAgent(Agent):
     """
     Agente de Q-Learning.
@@ -125,3 +126,4 @@ class QAgent(Agent):
         except FileNotFoundError:
             print(f"Archivo Q-table no encontrado en {path}. Se inicia una nueva Q-table vacía.")
             self.q_table = defaultdict(lambda: np.zeros(len(self.actions)))
+
