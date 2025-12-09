@@ -48,5 +48,4 @@ while True:
         state_dict = env.getGameState()
         done = env.game_over()
         total_reward_episode += reward
-        time.sleep(0.03)
     print(f"Recompensa episodio: {total_reward_episode}")

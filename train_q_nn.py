@@ -17,17 +17,16 @@ with open(QTABLE_PATH, 'rb') as f:
 # Convertir la Q-table en X (estados) e y (valores Q para cada acción)
 X = []  # Estados discretos
 y = []  # Q-values para cada acción
+zero_count=0
 for state, q_values in q_table.items():
-    X.append(list(state))
-    y.append(list(q_values))
+    if max(q_values) == 0:
+        zero_count+=1
+        continue
+    X.append(state)
+    y.append(q_values)
 
-X = np.array(X, dtype=np.float32)   # shape (n_states, n_features)
-y = np.array(y, dtype=np.float32)   # shape (n_states, n_actions)
-
-# Filtrar filas sin aprendizaje 
-mask = np.any(np.abs(y) > 1e-6, axis=1)  # keep rows where some q != 0
-X = X[mask]
-y = y[mask]
+X = np.array(X)   # shape (n_states, n_features)
+y = np.array(y)   # shape (n_states, n_actions)
 
 
 n_features = X.shape[1]
@@ -53,8 +52,10 @@ loss, mae = model.evaluate(X, y, verbose=0)
 print(f"Test MSE: {loss:.4f}, Test MAE: {mae:.4f}") ## CONSULTAR CON QUE METRICA EVALUAR EL ENTRENAMIENTO
 
 # --- Guardar el modelo entrenado ---
-model.save('flappy_q_nn_model.h5')
-print('Modelo guardado como TensorFlow SavedModel en flappy_q_nn_model/')
+#model.save('flappy_q_nn_model.h5')
+#print('Modelo guardado como TensorFlow SavedModel en flappy_q_nn_model/')
+model.save('flappy_q_nn_model.keras', include_optimizer=False, save_format='keras')
+print("Modelo guardado correctamente en flappy_q_nn_model.keras")
 
 # --- Notas para los alumnos ---
 # - Puedes modificar la arquitectura de la red y los hiperparámetros.
