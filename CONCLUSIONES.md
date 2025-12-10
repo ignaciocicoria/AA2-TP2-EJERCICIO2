@@ -50,29 +50,25 @@ Se generó la Q-table en base a 20000 episodios y se evaluaron ambos agentes dur
 #### Q-Learning
 Gráfico de recompensas por episodio durante el entrenamiento del agente Q-Learning:
 
----
 
-##### Discretización baja
+#### Discretización baja
 ![Discretización baja Q-Learning_Recompensa](Recompensa_10.jpg)
 
----
 
-##### Discretización alta
+#### Discretización alta
 ![Discretización alta Q-Learning_Recompensa](Recompensa_25.png)
 
 
 #### Red Neuronal (DQN)
 Gráficos de la métrica de pérdida (loss) y MAE durante el entrenamiento de la red neuronal:  
 
----
 
-##### Discretización baja
+#### Discretización baja
 ![Discretización baja Q-Learning_loss](loss_10.jpg)
 ![Discretización baja Q-Learning_mae](mae_10.jpg)
 
----
 
-##### Discretización baja
+#### Discretización baja
 ![Discretización alta Q-Learning_loss](loss_25.png)
 ![Discretización alta Q-Learning_mae](mae_25.png)
 
