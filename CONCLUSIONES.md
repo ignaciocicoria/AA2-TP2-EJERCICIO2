@@ -112,7 +112,7 @@ Gráficos de la métrica de pérdida (loss) y MAE durante el entrenamiento de la
 
 | Agente / Método       | Recompensa promedio (baja discretización) |
 |-----------------------|------------------------------------------|
-| Q-Learning (Q-table)  |                                        |
+| Q-Learning (Q-table)  | 63                                       |
 | Red Neuronal (DQN)    |                                       | 
 
 
@@ -122,8 +122,8 @@ Observamos que  el agente basado en Q-Learning logró un mejor desempeño promed
 
 ## Comentarios finales
 
-- La Q-table demostró ser efectiva para este juego debido al bajo número de variables discretizadas, teniendo un mejor desempeño con la discretización baja para las variables espaciales. Demostró una mejora significativa de rendimiento al aumentar el número de episodios de entrenamiento.
-- La red neuronal obtiene un mejor desempeño cuando la discretización es alta (pocos estados), donde la Q-table muestra mucho ruido. Esto ocurre porque la Q-table solo memoriza cada estado discretizado de forma independiente y pierde mucha información al agrupar tantos estados continuos en el mismo bin. En cambio, la red neuronal puede generalizar entre estados parecidos, suavizar la función de recompensa y encontrar patrones. Por eso, aun usando la misma Q-table como base, la red logra una política más estable y efectiva en ese escenario.
+- La Q-table demostró ser efectiva para este juego debido al bajo número de variables discretizadas, teniendo un mejor desempeño con la discretización baja para las variables espaciales. Demostró una mejora significativa de rendimiento al aumentar el número de episodios de entrenamiento. La Q-Table tiene un proceso de aprendizaje lento, con el número de episodios necesarios para el entrenamiento, la tabla conoce todos los estados y tiene un desempeño casi perfecto.
+- La red neuronal obtiene un mejor desempeño cuando la discretización es alta (pocos estados), donde la Q-table muestra mucho ruido. Esto ocurre porque la Q-table solo memoriza cada estado discretizado de forma independiente y pierde mucha información al agrupar tantos estados continuos en el mismo bin. En cambio, la red neuronal puede generalizar entre estados parecidos, suavizar la función de recompensa y encontrar patrones. Por eso, aun usando la misma Q-table como base, la red logra resultados más estables y efectivos en ese escenario.
 - Aunque utilizar discretizaciones distintas entre la Q-table y la red neuronal no es conceptualmente correcto (porque ambas aprenden sobre espacios de estados diferentes), en la práctica los buenos resultados obtenidos por el agente con red neuronal se explican por su capacidad para generalizar y aproximar mejor la salida cuando el espacio de estados es más fino.
 Mientras la Q-table le permite a la red neuronal aprender relaciones útiles entre las variables aun con una representación más gruesa del entorno, la mayor cantidad de estados (producto de la discretización baja) le permite alcanzar un desempeño superior al observado con discretización alta.
 
