@@ -35,8 +35,6 @@ Como estas variables son continuas, se agrupan en **intervalos**.
 | `next_pipe_top_y` / `next_pipe_bottom_y` | Representan dónde está el hueco | Se divide por *10* para agrupar rangos de altura en bins |
 
 
----
-
 ###  Representación Final del Estado  
 Se utiliza una **tupla de índices discretizados**, (player_y_bin, player_vel_bin, dist_to_pipe_bin, top_pipe_y_bin, bot_pipe_y_bin)
 
@@ -48,8 +46,6 @@ Se generó la Q-table en base a 20000 episodios y se evaluaron ambos agentes dur
 ---
 
 ### Visualización de evolución de métricas durante el entrenamiento
-
----
 
 #### Q-Learning
 Gráfico de recompensas por episodio durante el entrenamiento del agente Q-Learning:
@@ -64,7 +60,6 @@ Gráfico de recompensas por episodio durante el entrenamiento del agente Q-Learn
 ##### Discretización alta
 ![Discretización alta Q-Learning_Recompensa](Recompensa_25.png)
 
----
 
 #### Red Neuronal (DQN)
 Gráficos de la métrica de pérdida (loss) y MAE durante el entrenamiento de la red neuronal:  
@@ -81,7 +76,6 @@ Gráficos de la métrica de pérdida (loss) y MAE durante el entrenamiento de la
 ![Discretización alta Q-Learning_loss](loss_25.png)
 ![Discretización alta Q-Learning_mae](mae_25.png)
 
----
 
 Observamos que la Q-table aprende más rápido con un espacio de estados menor y alcanza recompensas promedio más altas. Con la discretización baja necesita más episodios para alcanzar valores de recompensas promedio más altos y estables. Esto se debe a que la exploración disminuye por episodios, generando que el porcentaje de exploración llegue a su mínimo rápidamente sin tener la tabla los conocimientos de explotación necesarios. Una posible solución a este problema es disminuir el porcentaje de exploración según las recompensas obtenidas.
 
