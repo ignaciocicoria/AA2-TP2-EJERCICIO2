@@ -25,11 +25,11 @@ class NNAgent(Agent):
             return 4
 
     def discretize_state(self, state):
-        y_bin = state['player_y'] // 25
+        y_bin = state['player_y'] // 10
         vel_bin = self.discretize_velocity(state['player_vel'])
-        pipe_dist_bin = state['next_pipe_dist_to_player'] // 25
-        pipe_top_bin = state['next_pipe_top_y'] // 25
-        pipe_bottom_bin = state['next_pipe_bottom_y'] // 25
+        pipe_dist_bin = state['next_pipe_dist_to_player'] // 10
+        pipe_top_bin = state['next_pipe_top_y'] // 10
+        pipe_bottom_bin = state['next_pipe_bottom_y'] // 10
         return [y_bin, vel_bin, pipe_dist_bin, pipe_top_bin, pipe_bottom_bin]
 
 
