@@ -39,9 +39,6 @@ Discretización implementada para cada variable:
 ###  Representación Final del Estado  
 Se utiliza una **tupla de índices discretizados**, (player_y_bin, player_vel_bin, dist_to_pipe_bin, top_pipe_y_bin, bot_pipe_y_bin)
 
-
-Esto convierte el entorno continuo en un espacio de estados **finito y explotable** por la Q-Table.
-
 ---
 ## Entrenamiento y evaluación 
 Se generó la Q-table en base a 20000 episodios y se evaluaron ambos agentes durante 100 episodios, bajo dos tipos de discretización: baja (dividiendo las variables espaciales del estado por 10) y alta (dividiéndolas por 25).
@@ -59,16 +56,18 @@ Gráficos de la métrica de pérdida (loss) y MAE durante el entrenamiento de la
 ![Discretización alta Q-Learning_loss](loss_25.jpg)
 ![Discretización alta Q-Learning_mae](mae_25.jpg)
 
-Observamos que la Q-table aprende más rápido con un espacio de estados menor y alcanza recompensas promedio más altas. Con la discretización baja necesita más episodios para alcanzar valores de recompensas promedio más altos y estables.
+Observamos que la Q-table aprende más rápido con un espacio de estados menor y alcanza recompensas promedio más altas. Con la discretización baja necesita más episodios para alcanzar valores de recompensas promedio más altos y estables. Esto se debe a que la exploración disminuye por episodios, generando que el porcentaje de exploración llegue a su mínimo rápidamente sin tener la tabla los conocimientos de explotación necesarios. Una posible solución a este problema es disminuir el porcentaje de exploración según las recompensas obtenidas.
 
 ## Comparación de resultados
 
 Episodios de entrenamiento Q-table: 20000
 
-| Agente / Método       | Recompensa promedio (baja discretización) | Recompensa promedio (alta discretización) |
+| Agente / Método       | Recompensa promedio (baja discretización) | Recompensa promedio (alta discretización) | 
 |-----------------------|------------------------------------------|-------------------------------------------|
-| Q-Learning (Q-table)  | 31                                       | 7                                        |
-| Red Neuronal (DQN)    | 16                                       | 35                                        |
+| Q-Learning (Q-table)  | **31**                                       | 7                                        |
+| Red Neuronal (DQN)    | 16                                       | **35**                                        |
+
+*A su vez por en una prueba fallida en la cual fijamos discretización distintas para los dos agentes, alta para el agente Q-Learning y baja para el agente DQN, obtuvimos una recompensa promedio de **40***
 
 Episodios de entrenamiento Q-table: ...
 
@@ -77,7 +76,8 @@ Episodios de entrenamiento Q-table: ...
 | Q-Learning (Q-table)  |                                        |
 | Red Neuronal (DQN)    |                                       | 
 
-Observamos que  el agente basado en Q-Learning logró un mejor desempeño promedio en comparación con el agente basado en red neuronal en este experimento. Esto puede deberse a que la discretización de estados simplifica el espacio de decisión y permite un aprendizaje más eficiente en un entorno relativamente simple como Flappy Bird. Por otro lado, la red neuronal, aunque más flexible y capaz de generalizar, puede requerir más entrenamiento y ajuste de hiperparámetros para alcanzar un rendimiento comparable.
+
+Observamos que  el agente basado en Q-Learning logró un mejor desempeño promedio en comparación con el agente basado en red neuronal en este experimento. Esto puede deberse a que la discretización de estados simplifica el espacio de decisión y permite un aprendizaje más eficiente en un entorno relativamente simple como Flappy Bird. Por otro lado, la red neuronal,...
 
 ## Comentarios finales
 
