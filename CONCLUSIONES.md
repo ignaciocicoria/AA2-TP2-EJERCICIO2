@@ -51,11 +51,11 @@ Se generó la Q-table en base a 20000 episodios y se evaluaron ambos agentes dur
 Gráfico de recompensas por episodio durante el entrenamiento del agente Q-Learning:
 
 
-#### Discretización baja
+#### Discretización baja (Más estados)
 ![Discretización baja Q-Learning_Recompensa](Recompensa_10.jpg)
 
 
-#### Discretización alta
+#### Discretización alta (Menos estados)
 ![Discretización alta Q-Learning_Recompensa](Recompensa_25.png)
 
 ---
@@ -64,12 +64,12 @@ Gráfico de recompensas por episodio durante el entrenamiento del agente Q-Learn
 Gráficos de la métrica de pérdida (loss) y MAE durante el entrenamiento de la red neuronal:  
 
 
-#### Discretización baja
+#### Discretización baja (Más estados)
 ![Discretización baja Q-Learning_loss](loss_10.jpg)
 ![Discretización baja Q-Learning_mae](mae_10.jpg)
 
 
-#### Discretización alta
+#### Discretización alta (Menos estados)
 ![Discretización alta Q-Learning_loss](loss_25.png)
 ![Discretización alta Q-Learning_mae](mae_25.png)
 
@@ -82,12 +82,12 @@ Observamos que la Q-table aprende más rápido con un espacio de estados menor y
 
 Episodios de entrenamiento Q-table: 20000
 
-| Agente / Método       | Recompensa promedio (baja discretización) | Recompensa promedio (alta discretización) | 
-|-----------------------|------------------------------------------|-------------------------------------------|
-| Q-Learning (Q-table)  | **31**                                       | 7                                        |
-| Red Neuronal (DQN)    | 16                                       | **23**                                        |
+| Agente / Método       | Recompensa promedio (baja discretización) | Recompensa promedio (alta discretización) | Recompensa promedio (baja discretización en NNAgent y alta discretización en QAgent)|
+|-----------------------|------------------------------------------|-------------------------------------------|------------------------------------------------------------------------------------------|
+| Q-Learning (Q-table)  | **31**                                       | 7                                     |        |
+| Red Neuronal (DQN)    | 16                                       | 23                                        | **32**  |
 
-*A su vez por en una prueba fallida en la cual fijamos discretizaciones distintas para los dos agentes, alta para el agente Q-Learning y baja para el agente DQN, obtuvimos una recompensa promedio de **40***
+*A su vez por en una prueba fallida en la cual fijamos discretizaciones distintas para los dos agentes, alta para el agente Q-Learning y baja para el agente DQN, obtuvimos una recompensa promedio de **32***
 
 ---
 
