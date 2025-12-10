@@ -58,6 +58,7 @@ Gráfico de recompensas por episodio durante el entrenamiento del agente Q-Learn
 #### Discretización alta
 ![Discretización alta Q-Learning_Recompensa](Recompensa_25.png)
 
+---
 
 #### Red Neuronal (DQN)
 Gráficos de la métrica de pérdida (loss) y MAE durante el entrenamiento de la red neuronal:  
@@ -68,7 +69,7 @@ Gráficos de la métrica de pérdida (loss) y MAE durante el entrenamiento de la
 ![Discretización baja Q-Learning_mae](mae_10.jpg)
 
 
-#### Discretización baja
+#### Discretización alta
 ![Discretización alta Q-Learning_loss](loss_25.png)
 ![Discretización alta Q-Learning_mae](mae_25.png)
 
