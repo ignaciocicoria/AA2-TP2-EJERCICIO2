@@ -49,16 +49,39 @@ Se generó la Q-table en base a 20000 episodios y se evaluaron ambos agentes dur
 
 ### Visualización de evolución de métricas durante el entrenamiento
 
+---
+
 #### Q-Learning
-Gráfico de recompensas por episodio durante el entrenamiento del agente Q-Learning:  
+Gráfico de recompensas por episodio durante el entrenamiento del agente Q-Learning:
+
+---
+
+##### Discretización baja
 ![Discretización baja Q-Learning_Recompensa](Recompensa_10.jpg)
+
+---
+
+##### Discretización alta
 ![Discretización alta Q-Learning_Recompensa](Recompensa_25.png)
+
+---
+
 #### Red Neuronal (DQN)
 Gráficos de la métrica de pérdida (loss) y MAE durante el entrenamiento de la red neuronal:  
+
+---
+
+##### Discretización baja
 ![Discretización baja Q-Learning_loss](loss_10.jpg)
 ![Discretización baja Q-Learning_mae](mae_10.jpg)
+
+---
+
+##### Discretización baja
 ![Discretización alta Q-Learning_loss](loss_25.png)
 ![Discretización alta Q-Learning_mae](mae_25.png)
+
+---
 
 Observamos que la Q-table aprende más rápido con un espacio de estados menor y alcanza recompensas promedio más altas. Con la discretización baja necesita más episodios para alcanzar valores de recompensas promedio más altos y estables. Esto se debe a que la exploración disminuye por episodios, generando que el porcentaje de exploración llegue a su mínimo rápidamente sin tener la tabla los conocimientos de explotación necesarios. Una posible solución a este problema es disminuir el porcentaje de exploración según las recompensas obtenidas.
 
