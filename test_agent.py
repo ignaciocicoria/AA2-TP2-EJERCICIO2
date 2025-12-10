@@ -35,17 +35,24 @@ except (ValueError, ModuleNotFoundError, AttributeError):
 agent = AgentClass(actions, game)
 
 # Agente con acciones aleatorias
-while True:
+total_reward=0
+for i in range(100):
     env.reset_game()
     agent.reset()
     state_dict = env.getGameState()
     done = False
     total_reward_episode = 0
-    print("\n--- Ejecutando agente ---")
+    print(f"\n--- Ejecutando agente episodio {i+1} ---")
     while not done:
         action = agent.act(state_dict)
         reward = env.act(action)
         state_dict = env.getGameState()
         done = env.game_over()
         total_reward_episode += reward
-    print(f"Recompensa episodio: {total_reward_episode}")
+        if total_reward_episode>=100:
+            total_reward_episode = 100
+            done=True
+    print(f"Recompensa episodio{i+1}: {total_reward_episode}")
+    total_reward+=total_reward_episode
+average_reward=total_reward//100
+print(f"Recompensa promedio del agente {class_name} en 100 episodios: {average_reward}(Recomenpensa máxima: 100)")

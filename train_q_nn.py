@@ -5,8 +5,7 @@ from tensorflow import keras
 from tensorflow.keras import layers
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.models import Sequential
-#pip install tensorflow
-
+import matplotlib.pyplot as plt
 
 # --- Cargar Q-table entrenada ---
 QTABLE_PATH = 'flappy_birds_q_table.pkl' 
@@ -44,21 +43,30 @@ model.compile(optimizer='adam', loss='mse', metrics=['mae'])
 
 # Entrenamiento red neuronal
 history = model.fit(X, y,
-                    epochs=50, batch_size=64, verbose=2)
+                    epochs=150, batch_size=64, verbose=2)
 
 
 # --- Mostrar resultados del entrenamiento ---
 loss, mae = model.evaluate(X, y, verbose=0)
-print(f"Test MSE: {loss:.4f}, Test MAE: {mae:.4f}") ## CONSULTAR CON QUE METRICA EVALUAR EL ENTRENAMIENTO
+print(f"Test MSE: {loss:.4f}, Test MAE: {mae:.4f}") 
 
+# --- Gráfico evolución del Loss (MSE) ---
+plt.figure()
+plt.plot(history.history['loss'])
+plt.title('Evolución del Loss (MSE)')
+plt.xlabel('Épocas')
+plt.ylabel('Loss')
+plt.grid(True)
+plt.show()
+
+# --- Gráfico evolución del MAE ---
+plt.figure()
+plt.plot(history.history['mae'])
+plt.title('Evolución del MAE')
+plt.xlabel('Épocas')
+plt.ylabel('MAE')
+plt.grid(True)
+plt.show()
 # --- Guardar el modelo entrenado ---
-#model.save('flappy_q_nn_model.h5')
-#print('Modelo guardado como TensorFlow SavedModel en flappy_q_nn_model/')
 model.save('flappy_q_nn_model.keras', include_optimizer=False, save_format='keras')
 print("Modelo guardado correctamente en flappy_q_nn_model.keras")
-
-# --- Notas para los alumnos ---
-# - Puedes modificar la arquitectura de la red y los hiperparámetros.
-# - Puedes usar la red entrenada para aproximar la Q-table y luego usarla en un agente tipo DQN.
-# - Si tu estado es una tupla de enteros, no hace falta normalizar, pero puedes probarlo.
-# - Si tienes dudas sobre cómo usar el modelo para predecir acciones, consulta la documentación de Keras.
