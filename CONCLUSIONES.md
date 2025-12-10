@@ -16,12 +16,11 @@ fue necesario transformar estas observaciones en una representación **discretiz
 | `next_pipe_top_y` | Altura del borde superior del hueco |
 | `next_pipe_bottom_y` | Altura del borde inferior del hueco |
 
-Estado crudo = **5 valores continuos seleccionados del estado completo
+Estado crudo = 5 valores continuos seleccionados del estado completo
 (*Estado completo = 8 valores*)
----
-
 ##  Ingeniería de Características (Discretización)
 
+---
 Como estas variables son continuas, se agrupan en **intervalos**.
 
 Discretización implementada para cada variable:
