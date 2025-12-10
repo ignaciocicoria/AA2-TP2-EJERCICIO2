@@ -17,16 +17,16 @@ fue necesario transformar estas observaciones en una representación **discretiz
 | `next_pipe_bottom_y` | Altura del borde inferior del hueco |
 
 Estado crudo = **5 valores continuos seleccionados del estado completo**
-*Estado completo = 8 valores*
+(*Estado completo = 8 valores*)
 ---
 
 ##  Ingeniería de Características (Discretización)
 
 Como estas variables son continuas, se agrupan en **intervalos**.
 
-Ejemplo de discretización implementada:
+Discretización implementada para cada variable:
 
-| Variable | Motivación | Tipo de discretización |
+| Variable | Sentido | Tipo de discretización |
 |---------|------------|----------------------|
 | `player_y` | Indica si el pájaro está muy arriba, centro o muy abajo | Se divide por *10* para agrupar rangos de altura en bins |
 | `player_vel` | Importa la dirección del movimiento, no el valor exacto | Clasificada en categorías: <br>• Subiendo rápido <br>• Subiendo <br>• Estable <br>• Bajando <br>• Bajando rápido |
