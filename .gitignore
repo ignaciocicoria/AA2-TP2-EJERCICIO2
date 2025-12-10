@@ -1,5 +1,6 @@
 env/
 tfenv/
+tfenv3/
 # Ignore pycache files
 *__pycache__*
 
