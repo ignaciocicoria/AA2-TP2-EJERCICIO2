@@ -29,7 +29,6 @@ class QAgent(Agent):
                 self.q_table = defaultdict(lambda: np.zeros(len(self.actions)))
         else:
             self.q_table = defaultdict(lambda: np.zeros(len(self.actions)))
-        # TODO: Definir parámetros de discretización según el entorno
 
     def discretize_velocity(self, vel):
             """
@@ -51,11 +50,11 @@ class QAgent(Agent):
         Discretiza el estado continuo en un estado discreto (tupla).
         """
         # Definir tamaños de bin
-        y_bin = state['player_y'] // 25       # cada 10 píxeles
+        y_bin = state['player_y'] // 10       # cada 10 píxeles
         vel_bin = self.discretize_velocity(state['player_vel'])
-        pipe_dist_bin = state['next_pipe_dist_to_player'] // 25
-        pipe_top_bin = state['next_pipe_top_y'] // 25
-        pipe_bottom_bin = state['next_pipe_bottom_y'] // 25
+        pipe_dist_bin = state['next_pipe_dist_to_player'] // 10
+        pipe_top_bin = state['next_pipe_top_y'] // 10
+        pipe_bottom_bin = state['next_pipe_bottom_y'] // 10
 
         # Retornar estado discretizado como tupla
         return (y_bin, vel_bin, pipe_dist_bin, pipe_top_bin, pipe_bottom_bin)

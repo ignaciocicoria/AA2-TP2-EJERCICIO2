@@ -14,6 +14,7 @@ actions = env.getActionSet()  # Ej: [None, 119 (w), 115 (s)]
 
 # Eliminamos la Qtable para que no se sobreescriba y poder comparar los dos agentes.
 file_path = "flappy_birds_q_table.pkl"
+
 if os.path.exists(file_path):
     os.remove(file_path)
     print (f"Se removió el archivo {file_path} ")
@@ -25,8 +26,8 @@ agent = QAgent(actions, game, epsilon=1.0, min_epsilon=0.05, epsilon_decay=0.995
                load_q_table_path= file_path)
 
 # --- Bucle de Entrenamiento ---
-num_episodes = 20000
-max_steps_per_episode = 20000
+num_episodes = 35000
+max_steps_per_episode = 35000
 rewards_all_episodes = []
 
 print(f"Acciones disponibles: {actions}")
@@ -91,6 +92,9 @@ for episode in range(5):
         done = env.game_over()
         total_reward_episode += reward
         time.sleep(0.03)
+        if total_reward_episode>=100:
+            total_reward_episode = 100
+        done=True
     print(f"Recompensa episodio de prueba {episode+1}: {total_reward_episode}")
 
 # --- Graficar la evolución de recompensas ---
