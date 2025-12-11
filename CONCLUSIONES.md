@@ -81,6 +81,7 @@ Observamos que la Q-table aprende más rápido con un espacio de estados menor y
 ### Comparación de resultados
 
 Episodios de entrenamiento Q-table: 20000
+Recompensa máxima posible: 100
 
 | Agente / Método       | Recompensa promedio (baja discretización) | Recompensa promedio (alta discretización) | Recompensa promedio (baja discretización en NNAgent y alta discretización en QAgent)|
 |-----------------------|------------------------------------------|-------------------------------------------|------------------------------------------------------------------------------------------|
@@ -109,6 +110,9 @@ Gráficos de la métrica de pérdida (loss) y MAE durante el entrenamiento de la
 ---
 
 ### Comparación de resultados (35000 episodios)
+
+Episodios de entrenamiento Q-table: 35000
+Recompensa máxima posible: 100
 
 | Agente / Método       | Recompensa promedio (baja discretización) |
 |-----------------------|------------------------------------------|
