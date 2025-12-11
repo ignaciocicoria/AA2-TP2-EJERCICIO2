@@ -112,8 +112,8 @@ Gráficos de la métrica de pérdida (loss) y MAE durante el entrenamiento de la
 
 | Agente / Método       | Recompensa promedio (baja discretización) |
 |-----------------------|------------------------------------------|
-| Q-Learning (Q-table)  | 63                                       |
-| Red Neuronal (DQN)    |                                       | 
+| Q-Learning (Q-table)  | 74                                       |
+| Red Neuronal (DQN)    | 34                                      | 
 
 
 Observamos que  el agente basado en Q-Learning logró un mejor desempeño promedio en comparación con el agente basado en red neuronal en este experimento, cuando la discretización es la correcta (baja en este caso) y la cantidad de episodios en train son suficientes. Por otro lado la red neuronal genera un mejor desempeño cuando la Q table no es precisa, producto de una discretización muy dura o la falta de episodios en el entrenamiento, a causa de su capacidad de generalización.
