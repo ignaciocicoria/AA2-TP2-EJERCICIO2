@@ -38,7 +38,7 @@ model = Sequential([
     Dense(n_actions, activation='linear')  # salida: Q para cada acción
 ])
 
-
+model.summary()
 model.compile(optimizer='adam', loss='mse', metrics=['mae'])
 
 # Entrenamiento red neuronal
