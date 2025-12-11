@@ -52,7 +52,7 @@ Gráfico de recompensas por episodio durante el entrenamiento del agente Q-Learn
 
 
 #### Discretización baja (Más estados)
-![Discretización baja Q-Learning_Recompensa](Recompensa_10.jpg)
+![Discretización baja Q-Learning_Recompensa](Recompensa_10.png)
 
 
 #### Discretización alta (Menos estados)
@@ -100,11 +100,11 @@ Resultados de aumentar a 35000 el número de episodios durante el entrenamiento 
 
 #### Q-Learning
 Gráfico de recompensas por episodio durante el entrenamiento del agente Q-Learning:  
-![Mayor número de episodios Q-Learning_Recompensa](Recompensa_35.jpg)
+![Mayor número de episodios Q-Learning_Recompensa](Recompensa_35.png)
 #### Red Neuronal (DQN)
 Gráficos de la métrica de pérdida (loss) y MAE durante el entrenamiento de la red neuronal:  
-![Mayor número de episodios Q-Learning_loss](loss_35.jpg)
-![Mayor número de episodios Q-Learning_mae](mae_35.jpg)
+![Mayor número de episodios Q-Learning_loss](loss_35.png)
+![Mayor número de episodios Q-Learning_mae](mae_35.png)
 
 ---
 
