@@ -43,7 +43,7 @@ model.compile(optimizer='adam', loss='mse', metrics=['mae'])
 
 # Entrenamiento red neuronal
 history = model.fit(X, y,
-                    epochs=150, batch_size=64, verbose=2)
+                    epochs=80, batch_size=64, verbose=2)
 
 
 # --- Mostrar resultados del entrenamiento ---
